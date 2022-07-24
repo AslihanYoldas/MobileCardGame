@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MobilKartOyunu</string>
+    <string name="buton_basla">Oyuna Başla</string>
+    <string name="buton_tekraroyna">Tekrar Oyna</string>
+</resources>
