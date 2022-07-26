@@ -1,11 +1,8 @@
-package com.example.mobilkartoyunu;
+package com.example.mobilkartoyunu_2;
 
-import android.content.Context;
+public class Buton {
 
-
-public class Buton extends androidx.appcompat.widget.AppCompatButton {
-
-    int id;
+    int id;//1=beyaz,2=sari,3=yesil,4=pembe,5=mavi,6=kırmızı,7=lacivert,8=siyah
     int tur;//1=buyu,2=guc,3=ikna
     double deger;
     KarakterKarti k;
@@ -14,53 +11,26 @@ public class Buton extends androidx.appcompat.widget.AppCompatButton {
 
 
 
-    public Buton(Context context,KarakterKarti k,int  tur) {
-        super(context);
+    public Buton(int id,KarakterKarti k,int  tur) {
         this.tur=tur;
         this.k=k;
         this.renk=k.karakter_adi;
-        String s= tur +"  "+ deger;
-        setYazi(s);
+        this.yazi = tur +"  "+ deger;
         if (tur==1)
             this.deger =k.buyuGucu;
         else if(tur==2)
             this.deger=k.fizikselGuc;
         else if(tur==3)
             this.deger=k.iknaGucu;
-        set_renk();
-
-
 
     }
 
-    private void set_renk() {
-        if(renk=="beyaz")
-           setBackground(getResources().getDrawable(R.drawable.beyaz));
-        else if(renk=="sari")
-            setBackground(getResources().getDrawable(R.drawable.sari));
-        else if(renk=="yesil")
-            setBackground(getResources().getDrawable(R.drawable.yesil));
-        else if(renk=="pembe")
-            setBackground(getResources().getDrawable(R.drawable.pembe));
-        else if(renk=="mavi")
-            setBackground(getResources().getDrawable(R.drawable.mavi));
-        else if(renk=="kirmizi")
-            setBackground(getResources().getDrawable(R.drawable.kirmizi));
-        else if(renk=="lacivert")
-            setBackground(getResources().getDrawable(R.drawable.lacivert));
-        else if(renk=="siyah")
-            setBackground(getResources().getDrawable(R.drawable.siyah));
 
-    }
 
     public String getYazi() {
         return yazi;
     }
 
-    public void setYazi(String yazi) {
-        this.yazi = yazi;
-        setText(yazi);
-    }
 
     public int getTur() {
         return tur;
