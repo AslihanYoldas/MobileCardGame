@@ -1,6 +1,7 @@
-package com.example.mobilkartoyunu;
+package com.example.mobilkartoyunu_2;
+
 class KarakterKarti{
-    String karakter_adi;
+    String karakter_adi;//nesnenin id'si gibi dusunulebilir(gelistiriciler tarafindan belirlenmis sabit sekiz karakter oldugu icin)
     double fizikselGuc;
     double buyuGucu;
     double iknaGucu;
