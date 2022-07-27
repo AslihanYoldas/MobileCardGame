@@ -9,15 +9,15 @@
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/GridLayout_kartlar"
         android:layout_width="374dp"
-        android:layout_height="369dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         app:columnCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898"
+        app:layout_constraintTop_toBottomOf="@+id/ortadaki_kart_eski2"
+        app:layout_constraintVertical_bias="1.0"
         app:rowCount="7">
 
 
@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="0"
-            app:srcCompat="@drawable/beyaz" />
+            app:srcCompat="@drawable/beyaz"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton3"
@@ -35,7 +36,8 @@
             android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="1"
-            app:srcCompat="@drawable/beyaz" />
+            app:srcCompat="@drawable/beyaz"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton4"
@@ -43,7 +45,8 @@
             android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="2"
-            app:srcCompat="@drawable/beyaz" />
+            app:srcCompat="@drawable/beyaz"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton5"
@@ -51,7 +54,8 @@
             android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="4"
-            app:srcCompat="@drawable/mavi" />
+            app:srcCompat="@drawable/mavi"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton6"
@@ -59,7 +63,8 @@
             android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="5"
-            app:srcCompat="@drawable/mavi" />
+            app:srcCompat="@drawable/mavi"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton7"
@@ -67,7 +72,8 @@
             android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="6"
-            app:srcCompat="@drawable/mavi" />
+            app:srcCompat="@drawable/mavi"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton8"
@@ -75,7 +81,8 @@
             android:layout_height="wrap_content"
             app:layout_column="1"
             app:layout_row="0"
-            app:srcCompat="@drawable/sari" />
+            app:srcCompat="@drawable/sari"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton9"
@@ -83,7 +90,8 @@
             android:layout_height="wrap_content"
             app:layout_column="1"
             app:layout_row="1"
-            app:srcCompat="@drawable/sari" />
+            app:srcCompat="@drawable/sari"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton10"
@@ -91,7 +99,8 @@
             android:layout_height="wrap_content"
             app:layout_column="1"
             app:layout_row="2"
-            app:srcCompat="@drawable/sari" />
+            app:srcCompat="@drawable/sari"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton11"
@@ -99,7 +108,8 @@
             android:layout_height="wrap_content"
             app:layout_column="2"
             app:layout_row="0"
-            app:srcCompat="@drawable/yesil" />
+            app:srcCompat="@drawable/yesil"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton12"
@@ -107,7 +117,8 @@
             android:layout_height="wrap_content"
             app:layout_column="2"
             app:layout_row="1"
-            app:srcCompat="@drawable/yesil" />
+            app:srcCompat="@drawable/yesil"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton13"
@@ -115,7 +126,8 @@
             android:layout_height="wrap_content"
             app:layout_column="2"
             app:layout_row="2"
-            app:srcCompat="@drawable/yesil" />
+            app:srcCompat="@drawable/yesil"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton14"
@@ -123,7 +135,8 @@
             android:layout_height="wrap_content"
             app:layout_column="3"
             app:layout_row="0"
-            app:srcCompat="@drawable/pembe" />
+            app:srcCompat="@drawable/pembe"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton15"
@@ -131,7 +144,8 @@
             android:layout_height="wrap_content"
             app:layout_column="3"
             app:layout_row="1"
-            app:srcCompat="@drawable/pembe" />
+            app:srcCompat="@drawable/pembe"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton16"
@@ -139,7 +153,8 @@
             android:layout_height="wrap_content"
             app:layout_column="3"
             app:layout_row="2"
-            app:srcCompat="@drawable/pembe" />
+            app:srcCompat="@drawable/pembe"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton17"
@@ -147,7 +162,8 @@
             android:layout_height="wrap_content"
             app:layout_column="1"
             app:layout_row="4"
-            app:srcCompat="@drawable/kirmizi" />
+            app:srcCompat="@drawable/kirmizi"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton18"
@@ -155,7 +171,8 @@
             android:layout_height="wrap_content"
             app:layout_column="1"
             app:layout_row="5"
-            app:srcCompat="@drawable/kirmizi" />
+            app:srcCompat="@drawable/kirmizi"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton19"
@@ -163,7 +180,8 @@
             android:layout_height="wrap_content"
             app:layout_column="1"
             app:layout_row="6"
-            app:srcCompat="@drawable/kirmizi" />
+            app:srcCompat="@drawable/kirmizi"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton20"
@@ -171,7 +189,8 @@
             android:layout_height="wrap_content"
             app:layout_column="2"
             app:layout_row="4"
-            app:srcCompat="@drawable/lacivert" />
+            app:srcCompat="@drawable/lacivert"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton21"
@@ -179,7 +198,8 @@
             android:layout_height="wrap_content"
             app:layout_column="2"
             app:layout_row="5"
-            app:srcCompat="@drawable/lacivert" />
+            app:srcCompat="@drawable/lacivert"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton22"
@@ -187,7 +207,8 @@
             android:layout_height="wrap_content"
             app:layout_column="2"
             app:layout_row="6"
-            app:srcCompat="@drawable/lacivert" />
+            app:srcCompat="@drawable/lacivert"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton23"
@@ -195,15 +216,17 @@
             android:layout_height="wrap_content"
             app:layout_column="3"
             app:layout_row="4"
-            app:srcCompat="@drawable/siyah" />
+            app:srcCompat="@drawable/siyah"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton24"
-            android:layout_width="97dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_column="3"
             app:layout_row="5"
-            app:srcCompat="@drawable/siyah" />
+            app:srcCompat="@drawable/siyah"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imageButton25"
@@ -211,13 +234,14 @@
             android:layout_height="wrap_content"
             app:layout_column="3"
             app:layout_row="6"
-            app:srcCompat="@drawable/siyah" />
+            app:srcCompat="@drawable/siyah"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Güç 2"
+            android:text="Güç: 2"
             android:textColor="@color/black"
             app:layout_column="0"
             app:layout_gravity="center"
@@ -227,7 +251,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Büyü 2"
+            android:text="Büyü: 2"
             android:textColor="@color/black"
             app:layout_column="0"
             app:layout_gravity="center"
@@ -237,7 +261,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bilgelik 1"
+            android:text="Bilgelik: 1"
             android:textColor="@color/black"
             app:layout_column="0"
             app:layout_gravity="center"
@@ -247,7 +271,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Güç 1"
+            android:text="Güç: 1"
             android:textColor="@color/black"
             app:layout_column="1"
             app:layout_gravity="center"
@@ -257,7 +281,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Büyü 2"
+            android:text="Büyü: 2"
             android:textColor="@color/black"
             app:layout_column="1"
             app:layout_gravity="center"
@@ -267,7 +291,7 @@
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bilgelik 1"
+            android:text="Bilgelik: 1"
             android:textColor="@color/black"
             app:layout_column="1"
             app:layout_gravity="center"
@@ -277,7 +301,7 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Güç 3"
+            android:text="Güç: 3"
             android:textColor="@color/black"
             app:layout_column="2"
             app:layout_gravity="center"
@@ -287,7 +311,7 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Büyü 3"
+            android:text="Büyü: 3"
             android:textColor="@color/black"
             app:layout_column="2"
             app:layout_gravity="center"
@@ -297,7 +321,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bilgelik 3"
+            android:text="Bilgelik: 3"
             android:textColor="@color/black"
             app:layout_column="2"
             app:layout_gravity="center"
@@ -397,7 +421,7 @@
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Güç 10"
+            android:text="Güç: 10"
             android:textColor="@color/white"
             app:layout_column="2"
             app:layout_gravity="center"
@@ -456,17 +480,72 @@
 
     <TextView
         android:id="@+id/textView_bilgilendirme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="195dp"
-        android:layout_marginBottom="255dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/GridLayout_kartlar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="229dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="55dp"
+        android:text="Hamle Sırası SENDE"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ortadaki_kart_eski"
+        app:layout_constraintEnd_toEndOf="@+id/GridLayout_kartlar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ortadaki_kart_eski"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ortadaki_kart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="21dp"
+        android:text="Kırmızı"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ortadaki_kart_eski"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ortadaki_kart_eski"
+        app:layout_constraintTop_toTopOf="@+id/ortadaki_kart_eski"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ortadaki_kart_eski"
+        android:layout_width="143dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="6dp"
+        android:text="Siyah"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/ortadaki_kart_eski2"
+        app:layout_constraintEnd_toStartOf="@+id/ortadaki_kart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_bilgilendirme" />
+
+    <TextView
+        android:id="@+id/ortadaki_kart_eski2"
+        android:layout_width="147dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="83dp"
+        android:text="Bilgelik: 4"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/GridLayout_kartlar"
+        app:layout_constraintEnd_toStartOf="@+id/ortadaki_kart2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ortadaki_kart_eski" />
+
+    <TextView
+        android:id="@+id/ortadaki_kart2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="26dp"
+        android:text="Bilgelik: 10"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ortadaki_kart_eski2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ortadaki_kart_eski2"
+        app:layout_constraintTop_toTopOf="@+id/ortadaki_kart_eski2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
