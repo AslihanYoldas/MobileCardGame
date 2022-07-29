@@ -8,6 +8,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.Random;
 
+//Ortadaki kartlar bir yerde tutulmalı oyuncunun birden fazla kart alma durumu
+
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     //Tanımlamalar
 
@@ -203,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv_metin.setText("Berabere");
             else{
                 tv_metin.setText("Kazanan :" + kazanan_kart.k.get_karakter_adi() );
+                aktif_kart.tur_kartlari=null;
             }
 
             //kazanan kart oyuncu1 in ise oyuncu 2 nin kartını oyuncu1 de görünür olması
@@ -264,16 +268,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     void savas(){
         double savas_gucu1= aktif_kart.get_savas_gucu(secilen_hamle);
         double savas_gucu2= aktif_kart.get_savas_gucu(aktif_kart.onceki_kart);
-        if (savas_gucu1 > savas_gucu2){//oyuncu1'in kazandigi
-            kazanan_kart = aktif_kart.mevcut_kart;
-            oyuncu1.kart_ayarla(kazanan_kart.id, true);
-            butonlari_aktif_etme(true, oyuncu1.kartlar);
+        if (savas_gucu1 > savas_gucu2) {//oyuncu1'in kazandigiilere bu satir uıygulanacak
+            for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
+                kazanan_kart = aktif_kart.tur_kartlari[i];//tur_kartlari dizisindek
+                oyuncu1.kart_ayarla(kazanan_kart.id, true);
+                butonlari_aktif_etme(true, oyuncu1.kartlar);
+            }
         }
-        else if (savas_gucu1 < savas_gucu2){//oyuncu2'in kazandigi
-            kazanan_kart = aktif_kart.onceki_kart;
-            oyuncu2.kart_ayarla(kazanan_kart.id, true);
-            butonlari_aktif_etme(false, oyuncu2.kartlar);
-            oyuncu1.kart_ayarla(kazanan_kart.id, false);
+        else if (savas_gucu1 < savas_gucu2) {//oyuncu2'in kazandigi
+            for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
+                kazanan_kart = aktif_kart.tur_kartlari[i];
+                oyuncu2.kart_ayarla(kazanan_kart.id, true);
+                butonlari_aktif_etme(false, oyuncu2.kartlar);
+                oyuncu1.kart_ayarla(kazanan_kart.id, false);
+            }
         }
 		else {
             kazanan_kart=null;

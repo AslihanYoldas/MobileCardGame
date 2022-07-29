@@ -1,6 +1,5 @@
-package com.example.mobil_kart_oyunu;
+package com.example.mobilkartoyunu_2;
 
-//üçüncü ve dördüncü tur dönüldüğünde son ikikart harici tutulmuyhor bunları da tut bir yerde
 public class AktifKart {
     Buton onceki_kart;
     Buton mevcut_kart;
