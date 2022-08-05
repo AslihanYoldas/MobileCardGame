@@ -1,21 +1,21 @@
-package com.example.mobilkartoyunu_2;
+package com.example.mobil_kart_oyunu;
 
 public class Buton {
-
-    int id;//1=beyaz,2=sari,3=yesil,4=pembe,5=mavi,6=kırmızı,7=lacivert,8=siyah
-    int tur;//1=buyu,2=guc,3=ikna
-    double deger;
-    KarakterKarti k;
+    public double id;//1=beyaz,2=sari,3=yesil,4=pembe,5=mavi,6=kırmızı,7=lacivert,8=siyah
+    public double tur;//1=buyu,2=guc,3=ikna
+    public double deger;
+    public KarakterKarti k;
     String renk;
-    String yazi;
 
 
+    public Buton() {
+    }
 
-    public Buton(int id,KarakterKarti k,int  tur) {
+    public Buton(Object kart, double  id, double tur) {
+        this.id=id;
         this.tur=tur;
-        this.k=k;
+        this.k=(KarakterKarti) kart;
         this.renk=k.karakter_adi;
-        this.yazi = tur +"  "+ deger;
         if (tur==1)
             this.deger =k.buyuGucu;
         else if(tur==2)
@@ -26,17 +26,27 @@ public class Buton {
     }
 
 
-
-    public String getYazi() {
-        return yazi;
+    public double getId() {
+        return id;
     }
 
+    public void setId(double id) {
+        this.id = id;
+    }
 
-    public int getTur() {
+    public double getDeger() {
+        return deger;
+    }
+
+    public void setDeger(double deger) {
+        this.deger = deger;
+    }
+
+    public double getTur() {
         return tur;
     }
 
-    public void setTur(int tur) {
+    public void setTur(double tur) {
         this.tur = tur;
     }
 
@@ -54,5 +64,16 @@ public class Buton {
 
     public void setRenk(String renk) {
         this.renk = renk;
+    }
+
+    @Override
+    public String toString() {
+        return "Buton{" +
+                "id='" + id + '\'' +
+                ", tur='" + tur + '\'' +
+                ", deger=" + deger +
+                ", k=" + k +
+                ", renk='" + renk + '\'' +
+                '}';
     }
 }

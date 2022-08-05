@@ -1,4 +1,4 @@
-package com.example.mobilkartoyunu_2;
+package com.example.mobil_kart_oyunu;
 
 public class AktifKart {
     Buton onceki_kart;
@@ -7,10 +7,10 @@ public class AktifKart {
     int ortadaki_kart_sayisi = 0;
     double savas_gucu;
 
-    AktifKart(Buton baslangic_karti){
-        this.mevcut_kart = baslangic_karti;
-        tur_kartlari[ortadaki_kart_sayisi] = baslangic_karti;
-        ortadaki_kart_sayisi++;
+    AktifKart(){//bubaslatıcının "Buton baslangic_karti" parametresaini sildim
+//        this.mevcut_kart = baslangic_karti;
+//        tur_kartlari[ortadaki_kart_sayisi] = baslangic_karti;
+//        ortadaki_kart_sayisi++;
     }
 
     void kart_atildi(Buton atilan_kart){

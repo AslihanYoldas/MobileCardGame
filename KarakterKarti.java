@@ -1,12 +1,15 @@
-package com.example.mobilkartoyunu_2;
+package com.example.mobil_kart_oyunu;
 
-class KarakterKarti{
-    String karakter_adi;//nesnenin id'si gibi dusunulebilir(gelistiriciler tarafindan belirlenmis sabit sekiz karakter oldugu icin)
-    double fizikselGuc;
-    double buyuGucu;
-    double iknaGucu;
+public class KarakterKarti {
+    public String karakter_adi;//nesnenin id'si gibi dusunulebilir(gelistiriciler tarafindan belirlenmis sabit sekiz karakter oldugu icin)
+    public double fizikselGuc;
+    public double buyuGucu;
+    public double iknaGucu;
 
-    KarakterKarti(String renk,double oz1, double oz2, double oz3){
+    public KarakterKarti() {
+    }
+
+    KarakterKarti(String renk, double oz1, double oz2, double oz3){
         set_karakter_adi(renk);
         set_fizikselGuc(oz1);
         set_buyuGucu(oz2);
@@ -40,5 +43,15 @@ class KarakterKarti{
     }
     void set_iknaGucu(double yeni_iknaGucu){
         this.iknaGucu = yeni_iknaGucu;
+    }
+
+    @Override
+    public String toString() {
+        return "KarakterKarti{" +
+                "karakter_adi='" + karakter_adi + '\'' +
+                ", fizikselGuc=" + fizikselGuc +
+                ", buyuGucu=" + buyuGucu +
+                ", iknaGucu=" + iknaGucu +
+                '}';
     }
 }
