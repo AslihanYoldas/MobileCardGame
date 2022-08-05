@@ -1,72 +1,52 @@
-package com.example.mobilkartoyunu;
+package com.example.mobilkartoyunu3;
 
-import android.content.Context;
-
-
-public class Buton extends androidx.appcompat.widget.AppCompatButton {
-
-    int id;
-    int tur;//1=buyu,2=guc,3=ikna
-    double deger;
-    KarakterKarti k;
+public class Buton {
+    public double id;//1=beyaz,2=sari,3=yesil,4=pembe,5=mavi,6=kırmızı,7=lacivert,8=siyah
+    public String tur;//1=buyu,2=guc,3=ikna
+    public double deger;
+    public KarakterKarti k;
     String renk;
-    String yazi;
 
 
+    public Buton() {
+    }
 
-    public Buton(Context context,KarakterKarti k,int  tur) {
-        super(context);
+    public Buton(Object kart, double  id, String tur) {
+        this.id=id;
         this.tur=tur;
-        this.k=k;
+        this.k=(KarakterKarti) kart;
         this.renk=k.karakter_adi;
-        String s= tur +"  "+ deger;
-        setYazi(s);
-        if (tur==1)
+        if (tur=="1")
             this.deger =k.buyuGucu;
-        else if(tur==2)
+        else if(tur=="2")
             this.deger=k.fizikselGuc;
-        else if(tur==3)
+        else if(tur=="3")
             this.deger=k.iknaGucu;
-        set_renk();
-
-
 
     }
 
-    private void set_renk() {
-        if(renk=="beyaz")
-           setBackground(getResources().getDrawable(R.drawable.beyaz));
-        else if(renk=="sari")
-            setBackground(getResources().getDrawable(R.drawable.sari));
-        else if(renk=="yesil")
-            setBackground(getResources().getDrawable(R.drawable.yesil));
-        else if(renk=="pembe")
-            setBackground(getResources().getDrawable(R.drawable.pembe));
-        else if(renk=="mavi")
-            setBackground(getResources().getDrawable(R.drawable.mavi));
-        else if(renk=="kirmizi")
-            setBackground(getResources().getDrawable(R.drawable.kirmizi));
-        else if(renk=="lacivert")
-            setBackground(getResources().getDrawable(R.drawable.lacivert));
-        else if(renk=="siyah")
-            setBackground(getResources().getDrawable(R.drawable.siyah));
 
+    public double getId() {
+        return id;
     }
 
-    public String getYazi() {
-        return yazi;
+    public void setId(double id) {
+        this.id = id;
     }
 
-    public void setYazi(String yazi) {
-        this.yazi = yazi;
-        setText(yazi);
+    public double getDeger() {
+        return deger;
     }
 
-    public int getTur() {
+    public void setDeger(double deger) {
+        this.deger = deger;
+    }
+
+    public String getTur() {
         return tur;
     }
 
-    public void setTur(int tur) {
+    public void setTur(String tur) {
         this.tur = tur;
     }
 
@@ -84,5 +64,16 @@ public class Buton extends androidx.appcompat.widget.AppCompatButton {
 
     public void setRenk(String renk) {
         this.renk = renk;
+    }
+
+    @Override
+    public String toString() {
+        return "Buton{" +
+                "id='" + id + '\'' +
+                ", tur='" + tur + '\'' +
+                ", deger=" + deger +
+                ", k=" + k +
+                ", renk='" + renk + '\'' +
+                '}';
     }
 }
