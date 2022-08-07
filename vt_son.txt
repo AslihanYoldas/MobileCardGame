@@ -1,0 +1,137 @@
+package com.example.mobilkartoyunu3;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class MainActivity extends AppCompatActivity {
+    DatabaseReference dbref_kart;
+    DatabaseReference dbref_buton;
+    ArrayList kartlar=new ArrayList<>();
+    ArrayList butonlar=new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        dbref_kart = FirebaseDatabase.getInstance().getReference().child("kartlar");
+        dbref_buton = FirebaseDatabase.getInstance().getReference().child("butonlar");
+
+  /*    vb_yaz("beyaz",2,2,1);
+        vb_yaz("sari",1,2,1);
+        vb_yaz("yesil",3,3,3);
+        vb_yaz("pembe",5,7,7);
+        vb_yaz("mavi",8,6,9);
+        vb_yaz("kirmizi",5,4,10);
+        vb_yaz("lacivert",10,3,6);
+        vb_yaz("siyah",4,10,7);*/
+        vb_oku_kart();
+        vb_oku_buton();
+
+
+
+
+
+
+
+
+    }
+
+
+
+    void vb_yaz(String renk,double oz1,double oz2, double oz3 ){
+
+        KarakterKarti kart=new KarakterKarti(renk,oz1,oz2,oz3);
+        dbref_kart.push().setValue(kart);
+    }
+
+    void vb_yaz( Object k, double  id,String tur){
+
+        Buton buton=new Buton(k,id,tur);
+        dbref_buton.push().setValue(buton);
+    }
+
+
+
+    void vb_oku_kart() {
+
+
+        dbref_kart.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot kartDatasnap : snapshot.getChildren()) {
+                    KarakterKarti k = kartDatasnap.getValue(KarakterKarti.class);
+                    kartlar.add(k);
+                    System.out.println((kartlar));
+                }
+/*
+                vb_yaz(kartlar.get(0),1,"2");
+                vb_yaz(kartlar.get(1),2,"2");
+                vb_yaz(kartlar.get(2),3,"2");
+                vb_yaz(kartlar.get(3),4,"2");
+                vb_yaz(kartlar.get(4),5,"2");
+                vb_yaz(kartlar.get(5),6,"2");
+                vb_yaz(kartlar.get(6),7,"2");
+                vb_yaz(kartlar.get(7),8,"1");
+                vb_yaz(kartlar.get(0),1,"1");
+                vb_yaz(kartlar.get(1),2,"1");
+                vb_yaz(kartlar.get(2),3,"1");
+                vb_yaz(kartlar.get(3),4,"1");
+                vb_yaz(kartlar.get(4),5,"1");
+                vb_yaz(kartlar.get(5),6,"1");
+                vb_yaz(kartlar.get(6),7,"1");
+                vb_yaz(kartlar.get(7),8,"3");
+                vb_yaz(kartlar.get(0),1,"3");
+                vb_yaz(kartlar.get(1),2,"3");
+                vb_yaz(kartlar.get(2),3,"3");
+                vb_yaz(kartlar.get(3),4,"3");
+                vb_yaz(kartlar.get(4),5,"3");
+                vb_yaz(kartlar.get(5),6,"3");
+                vb_yaz(kartlar.get(6),7,"3");
+                vb_yaz(kartlar.get(7),8,"3");
+*/
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
+    }
+
+     void vb_oku_buton() {
+        dbref_buton.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot butonDatasnap : snapshot.getChildren()) {
+                    Buton b = butonDatasnap.getValue(Buton.class);
+                    butonlar.add(b);
+                    System.out.println(b.id);
+                    System.out.println((butonlar));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+     }
+}
