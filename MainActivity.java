@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList kartlar=new ArrayList<>();
     ArrayList butonlar=new ArrayList<>();
 
+
     ImageButton beyaz_imagebuton_guc;
     ImageButton sari_imagebuton_guc;
     ImageButton yesil_imagebuton_guc;
@@ -47,13 +48,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton lacivert_imagebuton_ikna;
     ImageButton siyah_imagebuton_ikna;
 
-    ImageButton[] image_Butonlar={beyaz_imagebuton_guc,beyaz_imagebuton_buyu,beyaz_imagebuton_ikna,sari_imagebuton_buyu,sari_imagebuton_guc,
+
+    ImageButton[] image_Butonlar={beyaz_imagebuton_guc,beyaz_imagebuton_buyu,beyaz_imagebuton_ikna};/*,sari_imagebuton_buyu,sari_imagebuton_guc,
             sari_imagebuton_ikna,yesil_imagebuton_buyu,yesil_imagebuton_guc,yesil_imagebuton_ikna,pembe_imagebuton_buyu,
             pembe_imagebuton_guc,pembe_imagebuton_ikna, mavi_imagebuton_buyu,mavi_imagebuton_guc,mavi_imagebuton_ikna,
             kirmizi_imagebuton_buyu,kirmizi_imagebuton_guc,kirmizi_imagebuton_ikna,lacivert_imagebuton_buyu,lacivert_imagebuton_guc,
             lacivert_imagebuton_ikna,siyah_imagebuton_buyu,siyah_imagebuton_guc,siyah_imagebuton_ikna};
-
+*/
     TextView tv_metin;
+    TextView tv_sag;
+    TextView tv_sag_alt;
+    TextView tv_sol;
+    TextView tv_sol_alt;
     Buton secilen_hamle; // sonrdan global olarak tanımlanabilir Tıklanan butonu tutan değişken
     AktifKart aktif_kart = new AktifKart();//buton etkilesimi ile secilen karti temsil ediyor "secilen_kart"
     Oyuncu oyuncu1 = new Oyuncu();//oyuncu
@@ -106,115 +112,133 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void  butonlari_gorunur_gorunmez_yapma( boolean tercih , int indeks) {//Dizinin içindeki görünmesi gereken kartlarin id lerini alıp o kartları arayüzde görünür yapıp diğerlerini görünmez yapmalı
-
-        if (tercih == false) {//Görünmez yapma için
-            image_Butonlar[indeks].setVisibility(View.INVISIBLE);
-            image_Butonlar[indeks + 1].setVisibility(View.INVISIBLE);
-            image_Butonlar[indeks + 2].setVisibility(View.INVISIBLE);
-        } else if (tercih == true) {//Görünür yapma için
-            image_Butonlar[indeks].setVisibility(View.VISIBLE);
-            image_Butonlar[indeks + 1].setVisibility(View.VISIBLE);
-            image_Butonlar[indeks + 2].setVisibility(View.VISIBLE);
+    public void  butonlari_gorunur_gorunmez_yapma( boolean tercih , ImageButton b1,ImageButton b2,ImageButton b3,TextView tv1,TextView tv2,TextView tv3) {//Dizinin içindeki görünmesi gereken kartlarin id lerini alıp o kartları arayüzde görünür yapıp diğerlerini görünmez yapmalı
+        if(b1!=null && tv1!=null) {
+            if (tercih == false) {//Görünmez yapma için
+                b1.setVisibility(View.INVISIBLE);
+                b2.setVisibility(View.INVISIBLE);
+                b3.setVisibility(View.INVISIBLE);
+                tv1.setVisibility(View.INVISIBLE);
+                tv2.setVisibility(View.INVISIBLE);
+                tv3.setVisibility(View.INVISIBLE);
+            } else if (tercih == true) {//Görünür yapma için
+                b1.setVisibility(View.VISIBLE);
+                b2.setVisibility(View.VISIBLE);
+                b3.setVisibility(View.VISIBLE);
+                tv1.setVisibility(View.VISIBLE);
+                tv2.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+            }
         }
     }
 
-    public void butonlari_aktif_etme(boolean tercih, int k[]) {
+    public void butonlari_aktif_etme(boolean tercih, @NonNull int k[]) {
         int id;
+        TextView tv1=null;
+        TextView tv2=null;
+        TextView tv3=null;
+        ImageButton b1=null;
+        ImageButton b2=null;
+        ImageButton b3=null;
 
         for (int i = 0; i < k.length; i++) {
             id = k[i];
             //id den hangi butona ulaşacağımızı bulmalıyız
             if (id == 1) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 0);
-                if (tercih == false) {
-                    findViewById(R.id.textView).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView3).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView2).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView3).setVisibility(View.VISIBLE);
-                }
-            } else if (id == 2) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 3);
-                if (tercih == false) {
-                    findViewById(R.id.textView5).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView4).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView6).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView5).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView4).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView6).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView);
+                tv2 = (TextView) findViewById(R.id.textView2);
+                tv3 = (TextView) findViewById(R.id.textView3);
+                b1=beyaz_imagebuton_guc;
+                b2=beyaz_imagebuton_buyu;
+                b3=beyaz_imagebuton_ikna;
+
+
+            }
+            else if (id == 2) {
+
+                tv1 = (TextView) findViewById(R.id.textView5);
+                tv2 = (TextView) findViewById(R.id.textView4);
+                tv3 = (TextView) findViewById(R.id.textView6);
+                b1=sari_imagebuton_guc;
+                b2=sari_imagebuton_buyu;
+                b3=sari_imagebuton_ikna;
+
+
             } else if (id == 3) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 6);
-                if (tercih == false) {
-                    findViewById(R.id.textView8).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView7).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView9).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView8).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView7).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView9).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView8);
+                tv2 = (TextView) findViewById(R.id.textView7);
+                tv3 = (TextView) findViewById(R.id.textView9);
+                b1=yesil_imagebuton_guc;
+                b2=yesil_imagebuton_buyu;
+                b3=yesil_imagebuton_ikna;
+
+
             } else if (id == 4) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 9);
-                if (tercih == false) {
-                    findViewById(R.id.textView11).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView10).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView12).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView11).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView10).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView12).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView11);
+                tv2 = (TextView) findViewById(R.id.textView10);
+                tv3 = (TextView) findViewById(R.id.textView12);
+                b1=pembe_imagebuton_guc;
+                b2=pembe_imagebuton_buyu;
+                b3=pembe_imagebuton_ikna;
+
+
             } else if (id == 5) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 12);
-                if (tercih == false) {
-                    findViewById(R.id.textView14).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView13).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView15).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView14).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView13).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView15).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView14);
+                tv2 = (TextView) findViewById(R.id.textView13);
+                tv3 = (TextView) findViewById(R.id.textView15);
+                b1=mavi_imagebuton_guc;
+                b2=mavi_imagebuton_buyu;
+                b3=mavi_imagebuton_ikna;
+
             } else if (id == 6) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 15);
-                if (tercih == false) {
-                    findViewById(R.id.textView17).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView16).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView18).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView17).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView16).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView18).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView17);
+                tv2 = (TextView) findViewById(R.id.textView16);
+                tv3 = (TextView) findViewById(R.id.textView18);
+                b1=kirmizi_imagebuton_guc;
+                b2=kirmizi_imagebuton_buyu;
+                b3=kirmizi_imagebuton_ikna;
+
+
             } else if (id == 7) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 18);
-                if (tercih == false) {
-                    findViewById(R.id.textView20).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView19).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView21).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView20).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView19).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView21).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView20);
+                tv2 = (TextView) findViewById(R.id.textView19);
+                tv3 = (TextView) findViewById(R.id.textView21);
+                b1=lacivert_imagebuton_guc;
+                b2=lacivert_imagebuton_buyu;
+                b3=lacivert_imagebuton_ikna;
+
+
             } else if (id == 8) {
-                butonlari_gorunur_gorunmez_yapma(tercih, 21);
-                if (tercih == false) {
-                    findViewById(R.id.textView23).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView22).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.textView24).setVisibility(View.INVISIBLE);
-                }else {
-                    findViewById(R.id.textView23).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView22).setVisibility(View.VISIBLE);
-                    findViewById(R.id.textView24).setVisibility(View.VISIBLE);
-                }
+
+                tv1 = (TextView) findViewById(R.id.textView20);
+                tv2 = (TextView) findViewById(R.id.textView19);
+                tv3 = (TextView) findViewById(R.id.textView21);
+                b1=siyah_imagebuton_guc;
+                b2=siyah_imagebuton_buyu;
+                b3=siyah_imagebuton_ikna;
+
+
+            }
+            butonlari_gorunur_gorunmez_yapma(tercih, b1,b2,b3,tv1,tv2,tv3);
+        }
+
+    }
+
+    @Override
+    public void onClick(View v){
+        for(int i=0; i< image_Butonlar.length;i++) {
+            if (v.getId() == image_Butonlar[i].getId() && oyun_sirasi == true) {
+                secilen_hamle = (Buton) butonlar.get(i);
+                break;
             }
         }
+        oyun_dongusu();
     }
 
     @Override
@@ -224,14 +248,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dbref_kart = FirebaseDatabase.getInstance().getReference().child("kartlar");
         dbref_buton = FirebaseDatabase.getInstance().getReference().child("butonlar");
-
+a
         tv_metin=(TextView) findViewById(R.id.textView_bilgilendirme);
+        tv_sag=(TextView) findViewById(R.id.ortadaki_kart);
+        tv_sag_alt=(TextView) findViewById(R.id.ortadaki_kart2);
+        tv_sol=(TextView) findViewById(R.id.ortadaki_kart_eski);
+        tv_sol_alt=(TextView) findViewById(R.id.ortadaki_kart_eski2);
         //kartlarin arayuz karsiliklari olan butonlarin tanimlamalari
         beyaz_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton2);
+        image_Butonlar[0]=beyaz_imagebuton_guc ;
         beyaz_imagebuton_guc.setOnClickListener(this);
         beyaz_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton3);
+        image_Butonlar[1]=beyaz_imagebuton_buyu ;
         beyaz_imagebuton_buyu.setOnClickListener(this);
         beyaz_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton4);
+        image_Butonlar[2]=beyaz_imagebuton_ikna ;
         beyaz_imagebuton_ikna.setOnClickListener(this);
 
         mavi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton5);
@@ -283,34 +314,104 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         siyah_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton25);
         siyah_imagebuton_ikna.setOnClickListener(this);
 
-        vb_oku_kart();
-        vb_oku_buton();
+
 
         //OYUN BASLANGICI
         // rastgele kart dagitimi
         //oyuncu 1 icin baslangic kart dagitimi
+        boolean var_mi= false;
         for(int i=0; i<4; i++){
             oyuncu1.kart_al();
         }
         //oyuncu2(bilgisayar) kartları dagitildi
         for(int l=1; l<9 ;l++){//burada "l" aday kart no'yu temsil ediyor
             for(int f=0; f<5 ;f++){
-                if(oyuncu1.kartlar[f] != l) {
-                    oyuncu2.kart_ayarla(l, true);
+                if(oyuncu1.kartlar[f] == l) {
+                    var_mi = false;
+                    break;
+                }else{
+                    var_mi = true;
                 }
-                break;
+            }
+            if(var_mi) {
+                oyuncu2.kart_ayarla(l, true);
+                var_mi = false;
             }
         }
 
-        //butonlari_aktif_etme(false,oyuncu2.kartlar);
-    }
-
-
-    @Override
-    public void onClick(View v){
+        butonlari_aktif_etme(false,oyuncu2.kartlar);
 
     }
+    void savas(){
+        double savas_gucu1= aktif_kart.get_savas_gucu(secilen_hamle);
+        double savas_gucu2= aktif_kart.get_savas_gucu(aktif_kart.onceki_kart);
+        if (savas_gucu1 > savas_gucu2) {//oyuncu1'in kazandigiilere bu satir uıygulanacak
+            for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
+                kazanan_kart = aktif_kart.tur_kartlari[i];//tur_kartlari dizisindek
+                oyuncu1.kart_ayarla((int) kazanan_kart.id, true);
+                butonlari_aktif_etme(true, oyuncu1.kartlar);
+            }
+        }
+        else if (savas_gucu1 < savas_gucu2) {//oyuncu2'in kazandigi
+            for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
+                kazanan_kart = aktif_kart.tur_kartlari[i];
+                oyuncu2.kart_ayarla((int)kazanan_kart.id, true);
+                butonlari_aktif_etme(false, oyuncu2.kartlar);
+                oyuncu1.kart_ayarla((int)kazanan_kart.id, false);
+            }
+        }
+        else {
+            kazanan_kart=null;
+            return;
+        }
+    }
 
-
+    void oyun_dongusu(){
+        // oyun dongusu
+        Random rastgelelik_bilg= new Random();
+        Buton secilen_hamle_bilg=null;
+        int uretilen_indeks;
+        int uretilen_tur;
+        int secilen_kart;
+        vb_oku_buton();
+        while(oyuncu1.kart_sayisi != 0 || oyuncu2.kart_sayisi != 0){
+            //sira karsidakine gecti
+            if(secilen_hamle!= null){
+                if(oyun_sirasi == true ) {
+                    tv_metin.setText("Hamle Sırası Sende");
+                    tv_sag.setText(secilen_hamle.getRenk());
+                    tv_sag_alt.setText(secilen_hamle.getTur()+":"+(int) secilen_hamle.getDeger());
+                    tv_sol.setText(aktif_kart.onceki_kart.getRenk());
+                    tv_sol_alt.setText(aktif_kart.onceki_kart.getTur()+":"+(int) aktif_kart.onceki_kart.getDeger());
+                    aktif_kart.kart_atildi(secilen_hamle);
+                }
+                else if (oyun_sirasi == false) {
+                    tv_metin.setText("Hamle Sırası Kaeşı Tarafta");
+                    uretilen_indeks = rastgelelik_bilg.nextInt(oyuncu2.kart_sayisi);//hangi renk kart oldugu belirlendi
+                    uretilen_tur=rastgelelik_bilg.nextInt(3);//belirlenen kartin hangi alt oz.i oldugu belirlendi
+                    secilen_kart = oyuncu2.kartlar[uretilen_indeks];
+                    Buton temp;
+                    for(int h=0;h<24;h++){
+                        temp=(Buton)butonlar.get(h);
+                        if (temp.id == secilen_kart && temp.tur == uretilen_tur)
+                            secilen_hamle_bilg = (Buton)butonlar.get(h);
+                    }
+                    tv_sag.setText(secilen_hamle_bilg.getRenk());
+                    tv_sag_alt.setText(secilen_hamle_bilg.getTur()+":"+(int) secilen_hamle_bilg.getDeger());
+                    tv_sol.setText(aktif_kart.onceki_kart.getRenk());
+                    tv_sol_alt.setText(aktif_kart.onceki_kart.getTur()+":"+(int) aktif_kart.onceki_kart.getDeger());
+                    aktif_kart.kart_atildi(secilen_hamle_bilg);
+                }
+                if(secilen_hamle!= null)
+                    savas();
+                if(kazanan_kart == null)
+                    tv_metin.setText("Berabere");
+                else{
+                    tv_metin.setText("Kazanan :" + kazanan_kart.k.get_karakter_adi() );
+                    aktif_kart.tur_kartlari=null;
+                }
+            }
+        }
+    }
 
 }
