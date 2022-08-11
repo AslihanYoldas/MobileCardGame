@@ -38,6 +38,7 @@ public class Buton {
         return deger;
     }
 
+
     public void setDeger(double deger) {
         this.deger = deger;
     }

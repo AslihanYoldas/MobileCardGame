@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton siyah_imagebuton_ikna;
 
 
-    ImageButton[] image_Butonlar={beyaz_imagebuton_guc,beyaz_imagebuton_buyu,beyaz_imagebuton_ikna};/*,sari_imagebuton_buyu,sari_imagebuton_guc,
+    ImageButton[] image_Butonlar={beyaz_imagebuton_guc,beyaz_imagebuton_buyu,beyaz_imagebuton_ikna,sari_imagebuton_buyu,sari_imagebuton_guc,
             sari_imagebuton_ikna,yesil_imagebuton_buyu,yesil_imagebuton_guc,yesil_imagebuton_ikna,pembe_imagebuton_buyu,
             pembe_imagebuton_guc,pembe_imagebuton_ikna, mavi_imagebuton_buyu,mavi_imagebuton_guc,mavi_imagebuton_ikna,
             kirmizi_imagebuton_buyu,kirmizi_imagebuton_guc,kirmizi_imagebuton_ikna,lacivert_imagebuton_buyu,lacivert_imagebuton_guc,
             lacivert_imagebuton_ikna,siyah_imagebuton_buyu,siyah_imagebuton_guc,siyah_imagebuton_ikna};
-*/
+
     TextView tv_metin;
     TextView tv_sag;
     TextView tv_sag_alt;
@@ -87,6 +87,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     KarakterKarti k = kartDatasnap.getValue(KarakterKarti.class);
                     kartlar.add(k);
                 }
+
+                vb_yaz(kartlar.get(0),1,2);
+                vb_yaz(kartlar.get(0),1,1);
+                vb_yaz(kartlar.get(0),1,3);
+
+                vb_yaz(kartlar.get(1),2,1);
+                vb_yaz(kartlar.get(1),2,2);
+                vb_yaz(kartlar.get(1),2,3);
+
+                vb_yaz(kartlar.get(2),3,1);
+                vb_yaz(kartlar.get(2),3,2);
+                vb_yaz(kartlar.get(2),3,3);
+
+                vb_yaz(kartlar.get(3),4,1);
+                vb_yaz(kartlar.get(3),4,2);
+                vb_yaz(kartlar.get(3),4,3);
+
+                vb_yaz(kartlar.get(4),5,1);
+                vb_yaz(kartlar.get(4),5,2);
+                vb_yaz(kartlar.get(4),5,3);
+
+                vb_yaz(kartlar.get(5),6,1);
+                vb_yaz(kartlar.get(5),6,2);
+                vb_yaz(kartlar.get(5),6,3);
+
+                vb_yaz(kartlar.get(6),7,1);
+                vb_yaz(kartlar.get(6),7,2);
+                vb_yaz(kartlar.get(6),7,3);
+
+                vb_yaz(kartlar.get(7),8,1);
+                vb_yaz(kartlar.get(7),8,2);
+                vb_yaz(kartlar.get(7),8,3);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -216,9 +248,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             } else if (id == 8) {
 
-                tv1 = (TextView) findViewById(R.id.textView20);
-                tv2 = (TextView) findViewById(R.id.textView19);
-                tv3 = (TextView) findViewById(R.id.textView21);
+                tv1 = (TextView) findViewById(R.id.textView23);
+                tv2 = (TextView) findViewById(R.id.textView22);
+                tv3 = (TextView) findViewById(R.id.textView24);
                 b1=siyah_imagebuton_guc;
                 b2=siyah_imagebuton_buyu;
                 b3=siyah_imagebuton_ikna;
@@ -231,7 +263,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v){
+    public void onClick(@NonNull View v){
+
         for(int i=0; i< image_Butonlar.length;i++) {
             if (v.getId() == image_Butonlar[i].getId() && oyun_sirasi == true) {
                 secilen_hamle = (Buton) butonlar.get(i);
@@ -248,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dbref_kart = FirebaseDatabase.getInstance().getReference().child("kartlar");
         dbref_buton = FirebaseDatabase.getInstance().getReference().child("butonlar");
-a
+        vb_oku_buton();
         tv_metin=(TextView) findViewById(R.id.textView_bilgilendirme);
         tv_sag=(TextView) findViewById(R.id.ortadaki_kart);
         tv_sag_alt=(TextView) findViewById(R.id.ortadaki_kart2);
@@ -266,52 +299,73 @@ a
         beyaz_imagebuton_ikna.setOnClickListener(this);
 
         mavi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton5);
+        image_Butonlar[12]=mavi_imagebuton_guc ;
         mavi_imagebuton_guc.setOnClickListener(this);
         mavi_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton6);
+        image_Butonlar[13]=mavi_imagebuton_buyu ;
         mavi_imagebuton_buyu.setOnClickListener(this);
         mavi_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton7);
+        image_Butonlar[14]=mavi_imagebuton_ikna ;
         mavi_imagebuton_ikna.setOnClickListener(this);
 
         sari_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton8);
+        image_Butonlar[3]= sari_imagebuton_guc ;
         sari_imagebuton_guc.setOnClickListener(this);
         sari_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton9);
+        image_Butonlar[4]= sari_imagebuton_buyu ;
         sari_imagebuton_buyu.setOnClickListener(this);
         sari_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton10);
+        image_Butonlar[5]= sari_imagebuton_ikna ;
         sari_imagebuton_ikna.setOnClickListener(this);
 
         yesil_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton11);
+        image_Butonlar[6]= yesil_imagebuton_guc ;
         yesil_imagebuton_guc.setOnClickListener(this);
         yesil_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton12);
+        image_Butonlar[7]= yesil_imagebuton_buyu ;
         yesil_imagebuton_buyu.setOnClickListener(this);
         yesil_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton13);
+        image_Butonlar[8]= yesil_imagebuton_ikna ;
         yesil_imagebuton_ikna.setOnClickListener(this);
 
         pembe_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton14);
+        image_Butonlar[9]= pembe_imagebuton_guc ;
         pembe_imagebuton_guc.setOnClickListener(this);
         pembe_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton15);
+        image_Butonlar[10]= pembe_imagebuton_buyu ;
         pembe_imagebuton_buyu.setOnClickListener(this);
         pembe_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton16);
+        image_Butonlar[11]= pembe_imagebuton_ikna ;
         pembe_imagebuton_ikna.setOnClickListener(this);
 
         kirmizi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton17);
+        image_Butonlar[12]= kirmizi_imagebuton_guc ;
         kirmizi_imagebuton_guc.setOnClickListener(this);
         kirmizi_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton18);
+        image_Butonlar[13]= kirmizi_imagebuton_buyu ;
         kirmizi_imagebuton_buyu.setOnClickListener(this);
         kirmizi_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton19);
+        image_Butonlar[14]= kirmizi_imagebuton_ikna ;
         kirmizi_imagebuton_ikna.setOnClickListener(this);
 
         lacivert_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton20);
+        image_Butonlar[15]= lacivert_imagebuton_guc ;
         lacivert_imagebuton_guc.setOnClickListener(this);
         lacivert_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton21);
+        image_Butonlar[16]= lacivert_imagebuton_buyu ;
         lacivert_imagebuton_buyu.setOnClickListener(this);
         lacivert_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton22);
+        image_Butonlar[17]= lacivert_imagebuton_ikna ;
         lacivert_imagebuton_ikna.setOnClickListener(this);
 
         siyah_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton23);
+        image_Butonlar[18]= siyah_imagebuton_guc ;
         siyah_imagebuton_guc.setOnClickListener(this);
         siyah_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton24);
+        image_Butonlar[19]= siyah_imagebuton_buyu ;
         siyah_imagebuton_buyu.setOnClickListener(this);
         siyah_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton25);
+        image_Butonlar[20]= siyah_imagebuton_ikna ;
         siyah_imagebuton_ikna.setOnClickListener(this);
 
 
@@ -343,16 +397,15 @@ a
 
     }
     void savas(){
-        double savas_gucu1= aktif_kart.get_savas_gucu(secilen_hamle);
-        double savas_gucu2= aktif_kart.get_savas_gucu(aktif_kart.onceki_kart);
-        if (savas_gucu1 > savas_gucu2) {//oyuncu1'in kazandigiilere bu satir uıygulanacak
+        boolean savas_gucu= aktif_kart.get_savas_gucu();
+        if (savas_gucu) {//oyuncu1'in kazandigiilere bu satir uıygulanacak
             for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
                 kazanan_kart = aktif_kart.tur_kartlari[i];//tur_kartlari dizisindek
                 oyuncu1.kart_ayarla((int) kazanan_kart.id, true);
                 butonlari_aktif_etme(true, oyuncu1.kartlar);
             }
         }
-        else if (savas_gucu1 < savas_gucu2) {//oyuncu2'in kazandigi
+        else if (!savas_gucu) {//oyuncu2'in kazandigi
             for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
                 kazanan_kart = aktif_kart.tur_kartlari[i];
                 oyuncu2.kart_ayarla((int)kazanan_kart.id, true);
@@ -373,41 +426,45 @@ a
         int uretilen_indeks;
         int uretilen_tur;
         int secilen_kart;
-        vb_oku_buton();
-        while(oyuncu1.kart_sayisi != 0 || oyuncu2.kart_sayisi != 0){
+        if(oyuncu1.kart_sayisi != 0 || oyuncu2.kart_sayisi != 0){
             //sira karsidakine gecti
             if(secilen_hamle!= null){
-                if(oyun_sirasi == true ) {
-                    tv_metin.setText("Hamle Sırası Sende");
-                    tv_sag.setText(secilen_hamle.getRenk());
-                    tv_sag_alt.setText(secilen_hamle.getTur()+":"+(int) secilen_hamle.getDeger());
-                    tv_sol.setText(aktif_kart.onceki_kart.getRenk());
-                    tv_sol_alt.setText(aktif_kart.onceki_kart.getTur()+":"+(int) aktif_kart.onceki_kart.getDeger());
-                    aktif_kart.kart_atildi(secilen_hamle);
-                }
-                else if (oyun_sirasi == false) {
-                    tv_metin.setText("Hamle Sırası Kaeşı Tarafta");
-                    uretilen_indeks = rastgelelik_bilg.nextInt(oyuncu2.kart_sayisi);//hangi renk kart oldugu belirlendi
-                    uretilen_tur=rastgelelik_bilg.nextInt(3);//belirlenen kartin hangi alt oz.i oldugu belirlendi
-                    secilen_kart = oyuncu2.kartlar[uretilen_indeks];
-                    Buton temp;
-                    for(int h=0;h<24;h++){
-                        temp=(Buton)butonlar.get(h);
-                        if (temp.id == secilen_kart && temp.tur == uretilen_tur)
-                            secilen_hamle_bilg = (Buton)butonlar.get(h);
+                //tv_metin.setText("Hamle Sırası Sende");
+                //tv_sag.setText(secilen_hamle.getRenk());
+                //tv_sag_alt.setText(secilen_hamle.getTur()+":"+(int) secilen_hamle.getDeger());
+                //tv_sol.setText(aktif_kart.onceki_kart.getRenk());
+                //tv_sol_alt.setText(aktif_kart.onceki_kart.getTur()+":"+(int) aktif_kart.onceki_kart.getDeger());
+                aktif_kart.kart_atildi(secilen_hamle);//oyuncu1 kart attı
+
+
+                //tv_metin.setText("Hamle Sırası Kaeşı Tarafta");
+                int low = 1;
+                int high = oyuncu2.kart_sayisi;
+                uretilen_indeks = rastgelelik_bilg.nextInt(high-low) + low;//hangi renk kart oldugu belirlendi
+                low = 1;
+                high = 3;
+                uretilen_tur = rastgelelik_bilg.nextInt(high-low) + low;//belirlenen kartin hangi alt oz.i oldugu belirlendi
+                secilen_kart = oyuncu2.kartlar[uretilen_indeks];
+                Buton temp;
+                for(int h=0;h<24;h++){
+                    temp=(Buton)butonlar.get(h);
+                    if (temp.id == secilen_kart && temp.tur == uretilen_tur){
+                        secilen_hamle_bilg = (Buton)butonlar.get(h);
+                        break;
                     }
-                    tv_sag.setText(secilen_hamle_bilg.getRenk());
-                    tv_sag_alt.setText(secilen_hamle_bilg.getTur()+":"+(int) secilen_hamle_bilg.getDeger());
-                    tv_sol.setText(aktif_kart.onceki_kart.getRenk());
-                    tv_sol_alt.setText(aktif_kart.onceki_kart.getTur()+":"+(int) aktif_kart.onceki_kart.getDeger());
-                    aktif_kart.kart_atildi(secilen_hamle_bilg);
                 }
+                //tv_sag.setText(secilen_hamle_bilg.getRenk());
+                //tv_sag_alt.setText(secilen_hamle_bilg.getTur()+":"+(int) secilen_hamle_bilg.getDeger());
+                //tv_sol.setText(aktif_kart.onceki_kart.getRenk());
+                //tv_sol_alt.setText(aktif_kart.onceki_kart.getTur()+":"+(int) aktif_kart.onceki_kart.getDeger());
+                aktif_kart.kart_atildi(secilen_hamle_bilg);//oyuncu2 kart atti
+
                 if(secilen_hamle!= null)
                     savas();
-                if(kazanan_kart == null)
-                    tv_metin.setText("Berabere");
+                //if(kazanan_kart == null)
+                    //tv_metin.setText("Berabere");
                 else{
-                    tv_metin.setText("Kazanan :" + kazanan_kart.k.get_karakter_adi() );
+                    //tv_metin.setText("Kazanan :" + kazanan_kart.k.get_karakter_adi() );
                     aktif_kart.tur_kartlari=null;
                 }
             }
