@@ -1,4 +1,4 @@
-package com.example.mobil_kart_oyunu;
+package com.example.mobilkartoyunu3;
 
 public class KarakterKarti {
     public String karakter_adi;//nesnenin id'si gibi dusunulebilir(gelistiriciler tarafindan belirlenmis sabit sekiz karakter oldugu icin)

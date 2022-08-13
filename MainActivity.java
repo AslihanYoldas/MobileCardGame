@@ -1,4 +1,4 @@
-package com.example.mobil_kart_oyunu;
+package com.example.mobilkartoyunu3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             kirmizi_imagebuton_buyu,kirmizi_imagebuton_guc,kirmizi_imagebuton_ikna,lacivert_imagebuton_buyu,lacivert_imagebuton_guc,
             lacivert_imagebuton_ikna,siyah_imagebuton_buyu,siyah_imagebuton_guc,siyah_imagebuton_ikna};
 
+    double[] aitlik ={0,0,0,0,0,0,0,0};
+
     TextView tv_metin;
     TextView tv_sag;
     TextView tv_sag_alt;
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     AktifKart aktif_kart = new AktifKart();//buton etkilesimi ile secilen karti temsil ediyor "secilen_kart"
     Oyuncu oyuncu1 = new Oyuncu();//oyuncu
     Oyuncu oyuncu2 = new Oyuncu();//bilgisayar
-    Buton kazanan_kart;
+    Buton kazanan_kart=new Buton();
     boolean oyun_sirasi = true;//true iken oyuncu 1 de false iken oyuncu2 de
 
 
@@ -282,6 +284,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbref_kart = FirebaseDatabase.getInstance().getReference().child("kartlar");
         dbref_buton = FirebaseDatabase.getInstance().getReference().child("butonlar");
         vb_oku_buton();
+
+        //vb_oku_kart();
         tv_metin=(TextView) findViewById(R.id.textView_bilgilendirme);
         tv_sag=(TextView) findViewById(R.id.ortadaki_kart);
         tv_sag_alt=(TextView) findViewById(R.id.ortadaki_kart2);
@@ -375,7 +379,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //oyuncu 1 icin baslangic kart dagitimi
         boolean var_mi= false;
         for(int i=0; i<4; i++){
-            oyuncu1.kart_al();
+            double ait=oyuncu1.kart_al();
+            aitlik[(int)ait-1]=1;
         }
         //oyuncu2(bilgisayar) kartları dagitildi
         for(int l=1; l<9 ;l++){//burada "l" aday kart no'yu temsil ediyor
@@ -389,6 +394,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if(var_mi) {
                 oyuncu2.kart_ayarla(l, true);
+                aitlik[l-1]=2;
+
                 var_mi = false;
             }
         }
@@ -396,22 +403,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         butonlari_aktif_etme(false,oyuncu2.kartlar);
 
     }
-    void savas(){
-        boolean savas_gucu= aktif_kart.get_savas_gucu();
-        if (savas_gucu) {//oyuncu1'in kazandigiilere bu satir uıygulanacak
-            for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
-                kazanan_kart = aktif_kart.tur_kartlari[i];//tur_kartlari dizisindek
-                oyuncu1.kart_ayarla((int) kazanan_kart.id, true);
-                butonlari_aktif_etme(true, oyuncu1.kartlar);
-            }
+
+    void savas_sonu(double kazanan_oyuncu_no, boolean kart_tipi ){
+        Oyuncu kazanan;
+        Oyuncu kaybeden;
+        if(kazanan_oyuncu_no==1){kazanan=oyuncu1;kaybeden=oyuncu2;}
+        else{kazanan=oyuncu2; kaybeden =oyuncu1;}
+        for (int i = 0; i < aktif_kart.tur_kartlari.length-1; i++) {
+            kazanan_kart = aktif_kart.tur_kartlari[i];//tur_kartlari dizisindeki
+            kazanan.kart_ayarla((int) kazanan_kart.id, true);
+            aitlik[(int)kazanan_kart.getId()]=kazanan_oyuncu_no;
+            butonlari_aktif_etme(true, oyuncu1.kartlar);
+            kaybeden.kart_ayarla((int) kazanan_kart.id, false);
         }
-        else if (!savas_gucu) {//oyuncu2'in kazandigi
-            for (int i = 0; i < aktif_kart.tur_kartlari.length; i++) {
-                kazanan_kart = aktif_kart.tur_kartlari[i];
-                oyuncu2.kart_ayarla((int)kazanan_kart.id, true);
-                butonlari_aktif_etme(false, oyuncu2.kartlar);
-                oyuncu1.kart_ayarla((int)kazanan_kart.id, false);
-            }
+
+    }
+
+    double kime_ait(Buton kart){
+       return  aitlik[(int)kart.getId()-1];
+    }
+
+    void savas(){
+        double savas_gucu_mevcut = aktif_kart.get_savas_gucu(aktif_kart.mevcut_kart);
+        double savas_gucu_onceki = aktif_kart.get_savas_gucu(aktif_kart.onceki_kart);
+
+        if (savas_gucu_onceki>savas_gucu_mevcut && kime_ait(aktif_kart.onceki_kart) == 1) {
+            savas_sonu(1,true);// true=onceki,false=mevcut (kazananin kim oldughunu bildiren parametre)
+        }
+        else if(savas_gucu_onceki<savas_gucu_mevcut && kime_ait(aktif_kart.onceki_kart) == 1){
+            savas_sonu(1,false);
+        }
+        else if(savas_gucu_onceki>savas_gucu_mevcut && kime_ait(aktif_kart.onceki_kart) == 2){
+            savas_sonu(2,true);
+        }
+        else if(savas_gucu_onceki<savas_gucu_mevcut && kime_ait(aktif_kart.onceki_kart) == 2){
+            savas_sonu(2,false);
         }
         else {
             kazanan_kart=null;
@@ -461,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(secilen_hamle!= null)
                     savas();
-                //if(kazanan_kart == null)
+                    //if(kazanan_kart == null)
                     //tv_metin.setText("Berabere");
                 else{
                     //tv_metin.setText("Kazanan :" + kazanan_kart.k.get_karakter_adi() );

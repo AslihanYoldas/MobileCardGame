@@ -1,4 +1,4 @@
-package com.example.mobil_kart_oyunu;
+package com.example.mobilkartoyunu3;
 
 public class AktifKart {
     Buton onceki_kart = new Buton();
@@ -20,29 +20,19 @@ public class AktifKart {
         this.mevcut_kart = atilan_kart;
     }
 
-    boolean get_savas_gucu(){
-        double savas_gucu1=0;
-        double savas_gucu2=0;
+    double get_savas_gucu(Buton kart){
+        double savas_gucu=0;
 
-        if (this.mevcut_kart.tur == 1) {//buyu
-            savas_gucu1 = 0.3 * this.mevcut_kart.deger;
+        if (kart.tur == 1) {//buyu
+            savas_gucu = 0.3 * kart.deger;
         }
         else if(this.mevcut_kart.tur == 2) {//guc
-            savas_gucu1 = 0.2 * this.mevcut_kart.deger;
+            savas_gucu = 0.2 * kart.deger;
         }
         else if(this.mevcut_kart.tur == 3) {//ikna
-            savas_gucu1 = 0.1 * this.mevcut_kart.deger;
+            savas_gucu = 0.1 * kart.deger;
         }
-        if (this.onceki_kart.tur == 1) {//buyu
-            savas_gucu2 = 0.3 * this.onceki_kart.deger;
-        }
-        else if(this.onceki_kart.tur == 2) {//guc
-            savas_gucu2 = 0.2 * this.onceki_kart.deger;
-        }
-        else if(this.onceki_kart.tur == 3) {//ikna
-            savas_gucu2 = 0.1 * this.onceki_kart.deger;
-        }
-        return savas_gucu1>savas_gucu2;
+        return savas_gucu;
     }
 
 }
