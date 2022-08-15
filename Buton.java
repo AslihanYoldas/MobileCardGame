@@ -1,4 +1,4 @@
-package com.example.mobilkartoyunu3;
+package com.example.mobil_kart_oyunu;
 
 public class Buton {
     public double id;//1=beyaz,2=sari,3=yesil,4=pembe,5=mavi,6=kırmızı,7=lacivert,8=siyah

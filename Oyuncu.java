@@ -1,4 +1,4 @@
-package com.example.mobilkartoyunu3;
+package com.example.mobil_kart_oyunu;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -33,7 +33,7 @@ public class Oyuncu {
         int k = 0;
         while(this.kartlar[k] != 0){//dort farkli kart uretildiginden emin olmak icin
             if (uretilen_kart_no == kartlar[k]){
-                uretilen_kart_no = rastgelelik.nextInt(8);
+                uretilen_kart_no = rastgelelik.nextInt(high-low) + low;
                 k = 0;
             }
             else{
@@ -45,16 +45,24 @@ public class Oyuncu {
         return (double) uretilen_kart_no;
     }
 
-    void kart_ayarla(int kart_no, boolean art_azalt){
-        if (art_azalt == true){
+    int kacinci_sirada(int kart_no){
+        for(int x=0;x<=7;x++){
+            if (this.kartlar[x] == kart_no)
+                return x;
+        }
+        return -1; //bulamadi demek
+    }
 
-            int indeks= Arrays.asList(this.kartlar).indexOf(kart_no);
+    void kart_ayarla(int kart_no, boolean art_azalt){
+        int indeks;
+        if (art_azalt == true){
+            indeks = kacinci_sirada(kart_no);
             if (indeks!=-1)//aynı kartı eklemesini engellemek için
                 return;
             this.kartlar[this.kart_sayisi ] = kart_no;
             set_kart_sayisi(this.kart_sayisi + 1);}
         else{
-            int indeks= Arrays.asList(this.kartlar).indexOf(kart_no);
+            indeks= kacinci_sirada(kart_no);
             if(indeks==-1)//olmayan kartı çıkarma durumunu engelliyoruz
                 return;
             this.kartlar[indeks] = 0;

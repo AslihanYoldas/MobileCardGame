@@ -1,4 +1,4 @@
-package com.example.mobilkartoyunu3;
+package com.example.mobil_kart_oyunu;
 
 public class AktifKart {
     Buton onceki_kart = new Buton();
