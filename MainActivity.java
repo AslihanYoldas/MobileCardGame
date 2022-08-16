@@ -17,8 +17,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//berabere kalındığında oyuncu1 in kartlarından azalsın önceki attığı kart
-//kazandığında geri gelsin kaybettiğinde zaten gitti
+//oyun bittiğinde ikinci bir sayfada tekrar oynama ve bitirme eklencek
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     DatabaseReference dbref_kart;
@@ -53,11 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton siyah_imagebuton_ikna;
 
 
-    ImageButton[] image_Butonlar={beyaz_imagebuton_guc,beyaz_imagebuton_buyu,beyaz_imagebuton_ikna,sari_imagebuton_buyu,sari_imagebuton_guc,
-            sari_imagebuton_ikna,yesil_imagebuton_buyu,yesil_imagebuton_guc,yesil_imagebuton_ikna,pembe_imagebuton_buyu,
-            pembe_imagebuton_guc,pembe_imagebuton_ikna, mavi_imagebuton_buyu,mavi_imagebuton_guc,mavi_imagebuton_ikna,
-            kirmizi_imagebuton_buyu,kirmizi_imagebuton_guc,kirmizi_imagebuton_ikna,lacivert_imagebuton_buyu,lacivert_imagebuton_guc,
-            lacivert_imagebuton_ikna,siyah_imagebuton_buyu,siyah_imagebuton_guc,siyah_imagebuton_ikna};
+    ImageButton[] image_Butonlar={beyaz_imagebuton_guc,beyaz_imagebuton_buyu,beyaz_imagebuton_ikna,
+            sari_imagebuton_buyu,sari_imagebuton_guc, sari_imagebuton_ikna,
+            yesil_imagebuton_buyu,yesil_imagebuton_guc,yesil_imagebuton_ikna,
+            pembe_imagebuton_buyu, pembe_imagebuton_guc,pembe_imagebuton_ikna,
+            mavi_imagebuton_buyu,mavi_imagebuton_guc,mavi_imagebuton_ikna,
+            kirmizi_imagebuton_buyu,kirmizi_imagebuton_guc,kirmizi_imagebuton_ikna,
+            lacivert_imagebuton_buyu,lacivert_imagebuton_guc, lacivert_imagebuton_ikna,
+            siyah_imagebuton_buyu,siyah_imagebuton_guc,siyah_imagebuton_ikna};
 
     double[] aitlik ={0,0,0,0,0,0,0,0};
 
@@ -306,72 +308,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         image_Butonlar[2]=beyaz_imagebuton_ikna ;
         beyaz_imagebuton_ikna.setOnClickListener(this);
 
-        mavi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton5);
-        image_Butonlar[12]=mavi_imagebuton_guc ;
-        mavi_imagebuton_guc.setOnClickListener(this);
         mavi_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton6);
-        image_Butonlar[13]=mavi_imagebuton_buyu ;
+        image_Butonlar[12]=mavi_imagebuton_buyu ;
         mavi_imagebuton_buyu.setOnClickListener(this);
+        mavi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton5);
+        image_Butonlar[13]=mavi_imagebuton_guc ;
+        mavi_imagebuton_guc.setOnClickListener(this);
         mavi_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton7);
         image_Butonlar[14]=mavi_imagebuton_ikna ;
         mavi_imagebuton_ikna.setOnClickListener(this);
 
-        sari_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton8);
-        image_Butonlar[3]= sari_imagebuton_guc ;
-        sari_imagebuton_guc.setOnClickListener(this);
         sari_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton9);
-        image_Butonlar[4]= sari_imagebuton_buyu ;
+        image_Butonlar[3]= sari_imagebuton_buyu ;
         sari_imagebuton_buyu.setOnClickListener(this);
+        sari_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton8);
+        image_Butonlar[4]= sari_imagebuton_guc ;
+        sari_imagebuton_guc.setOnClickListener(this);
         sari_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton10);
         image_Butonlar[5]= sari_imagebuton_ikna ;
         sari_imagebuton_ikna.setOnClickListener(this);
 
-        yesil_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton11);
-        image_Butonlar[6]= yesil_imagebuton_guc ;
-        yesil_imagebuton_guc.setOnClickListener(this);
         yesil_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton12);
-        image_Butonlar[7]= yesil_imagebuton_buyu ;
+        image_Butonlar[6]= yesil_imagebuton_buyu ;
         yesil_imagebuton_buyu.setOnClickListener(this);
+        yesil_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton11);
+        image_Butonlar[7]= yesil_imagebuton_guc ;
+        yesil_imagebuton_guc.setOnClickListener(this);
         yesil_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton13);
         image_Butonlar[8]= yesil_imagebuton_ikna ;
         yesil_imagebuton_ikna.setOnClickListener(this);
 
-        pembe_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton14);
-        image_Butonlar[9]= pembe_imagebuton_guc ;
-        pembe_imagebuton_guc.setOnClickListener(this);
         pembe_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton15);
-        image_Butonlar[10]= pembe_imagebuton_buyu ;
+        image_Butonlar[9]= pembe_imagebuton_buyu ;
         pembe_imagebuton_buyu.setOnClickListener(this);
+        pembe_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton14);
+        image_Butonlar[10]= pembe_imagebuton_guc ;
+        pembe_imagebuton_guc.setOnClickListener(this);
         pembe_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton16);
         image_Butonlar[11]= pembe_imagebuton_ikna ;
         pembe_imagebuton_ikna.setOnClickListener(this);
 
-        kirmizi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton17);
-        image_Butonlar[15]= kirmizi_imagebuton_guc ;
-        kirmizi_imagebuton_guc.setOnClickListener(this);
         kirmizi_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton18);
-        image_Butonlar[16]= kirmizi_imagebuton_buyu ;
+        image_Butonlar[15]= kirmizi_imagebuton_buyu ;
         kirmizi_imagebuton_buyu.setOnClickListener(this);
+        kirmizi_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton17);
+        image_Butonlar[16]= kirmizi_imagebuton_guc ;
+        kirmizi_imagebuton_guc.setOnClickListener(this);
         kirmizi_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton19);
         image_Butonlar[17]= kirmizi_imagebuton_ikna ;
         kirmizi_imagebuton_ikna.setOnClickListener(this);
 
-        lacivert_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton20);
-        image_Butonlar[18]= lacivert_imagebuton_guc ;
-        lacivert_imagebuton_guc.setOnClickListener(this);
         lacivert_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton21);
-        image_Butonlar[19]= lacivert_imagebuton_buyu ;
+        image_Butonlar[18]= lacivert_imagebuton_buyu ;
         lacivert_imagebuton_buyu.setOnClickListener(this);
+        lacivert_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton20);
+        image_Butonlar[19]= lacivert_imagebuton_guc ;
+        lacivert_imagebuton_guc.setOnClickListener(this);
         lacivert_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton22);
         image_Butonlar[20]= lacivert_imagebuton_ikna ;
         lacivert_imagebuton_ikna.setOnClickListener(this);
 
-        siyah_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton23);
-        image_Butonlar[21]= siyah_imagebuton_guc ;
-        siyah_imagebuton_guc.setOnClickListener(this);
         siyah_imagebuton_buyu = (ImageButton) findViewById(R.id.imageButton24);
-        image_Butonlar[22]= siyah_imagebuton_buyu ;
+        image_Butonlar[21]= siyah_imagebuton_buyu ;
         siyah_imagebuton_buyu.setOnClickListener(this);
+        siyah_imagebuton_guc = (ImageButton) findViewById(R.id.imageButton23);
+        image_Butonlar[22]= siyah_imagebuton_guc ;
+        siyah_imagebuton_guc.setOnClickListener(this);
         siyah_imagebuton_ikna = (ImageButton) findViewById(R.id.imageButton25);
         image_Butonlar[23]= siyah_imagebuton_ikna ;
         siyah_imagebuton_ikna.setOnClickListener(this);
@@ -506,6 +508,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     savas();
                 if(kazanan_kart == null){
                     tv_metin.setText("Berabere");
+                    butonlari_aktif_etme(false,(int)aktif_kart.onceki_kart.getId());
                     return;}
                 else{
                     tv_metin.setText("Kazanan :" + kazanan_kart.k.get_karakter_adi() );
