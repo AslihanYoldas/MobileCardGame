@@ -1,8 +1,8 @@
-package com.example.mobilkartoyunu3;
+package com.example.mobil_kart_oyunu;
 
 public class Buton {
     public double id;//1=beyaz,2=sari,3=yesil,4=pembe,5=mavi,6=kırmızı,7=lacivert,8=siyah
-    public String tur;//1=buyu,2=guc,3=ikna
+    public double tur;//1=buyu,2=guc,3=ikna
     public double deger;
     public KarakterKarti k;
     String renk;
@@ -11,20 +11,19 @@ public class Buton {
     public Buton() {
     }
 
-    public Buton(Object kart, double  id, String tur) {
+    public Buton(Object kart, double  id, double tur) {
         this.id=id;
         this.tur=tur;
         this.k=(KarakterKarti) kart;
         this.renk=k.karakter_adi;
-        if (tur=="1")
+        if (tur==1)
             this.deger =k.buyuGucu;
-        else if(tur=="2")
+        else if(tur==2)
             this.deger=k.fizikselGuc;
-        else if(tur=="3")
+        else if(tur==3)
             this.deger=k.iknaGucu;
 
     }
-
 
     public double getId() {
         return id;
@@ -38,15 +37,16 @@ public class Buton {
         return deger;
     }
 
+
     public void setDeger(double deger) {
         this.deger = deger;
     }
 
-    public String getTur() {
+    public double getTur() {
         return tur;
     }
 
-    public void setTur(String tur) {
+    public void setTur(double tur) {
         this.tur = tur;
     }
 
@@ -76,4 +76,5 @@ public class Buton {
                 ", renk='" + renk + '\'' +
                 '}';
     }
+
 }
