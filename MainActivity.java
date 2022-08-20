@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void butonlari_aktif_etme(boolean tercih, @NonNull int id) {
+    public void butonlari_aktif_etme(boolean tercih, int id) {
         TextView tv1=null;
         TextView tv2=null;
         TextView tv3=null;
